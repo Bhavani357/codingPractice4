@@ -55,7 +55,7 @@ app.post("/players/", async (request, response) => {
     VALUES (
        '${playerName}',
         ${jerseyNumber},
-        ${role}
+        '${role}'
     );`;
   await db.run(addPlayersQuery);
 
@@ -90,9 +90,9 @@ app.put("/players/:playerId/", async (request, response) => {
     SET 
       player_name = '${playerName}',
       jersey_number = ${jerseyNumber},
-      role = ${role}
+      role = '${role}'
     WHERE 
-      player_id = ${playerId};`;
+      player_id = '${playerId}';`;
   await db.run(updatedPlayersQuery);
   response.send("Player Details Updated");
 });
